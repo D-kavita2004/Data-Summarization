@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="robots" content="index, follow" />
+   <meta name="description" content="Data Summarization">
+   <meta name="author" content="D kavita">
+   <title>Data Summarization</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <style>
+      *{
+         margin:0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+      body{
+      height: 100vh;
+      width: 100vw;
+      /* background-image: url(https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg); */
+      background-image: url(https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&w=600),url(https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg);
+      background-size: 100% 100%;
+      }
+      main{
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         height: 100%;
+         width: 100%;
+      }
+      h1{
+         margin-top: 3vmin;
+         font-size: 4vmax;
+      }
+      #myForm{
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         height: 100%;
+         width: 100%;
+         margin-top: 6vmin;
+         /* background-color: aqua; */
+      }
+      .container{
+         display: flex;
+         /* background-color: brown; */
+         height: 75%;
+         width: 100%;
+         margin-top: -4%;
+         margin-bottom: 2%;
+      }
+      .field1{
+         height: 100%;
+         width: 55%;
+         /* background-color: blueviolet; */
+         margin-left: 4vmin;
+         margin-right: 4vmin;
+         display: flex;
+         align-items: center;
+         flex-direction: column;
+      }
+      .field2{
+         height: 100%;
+         width: 30%;
+         /* background-color: blueviolet; */
+         margin-left: 4vmin;
+         margin-right: 4vmin;
+         display: flex;
+         align-items: center;
+         flex-direction: column;
+      }
+      #params{
+         /* background-color: aqua; */
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         flex-direction: column;
+         width: 10%;
+      }
+      #input_text{
+         height: 90%;
+         width: 100%;
+         box-shadow: 0 0 10px 0;
+         font-size: large;
+      }
+      #output_text{
+         height: 90%;
+         width: 100%;
+         box-shadow: 0 0 10px 0;
+         font-size: large;
+      }
+      button{
+         height: 7vmin;
+         width: 30vmin;
+         border-radius: 6px;
+         box-shadow: 0 0 10px 0;
+         border-style:double;
+         margin-top: 3vmin;
+         font-size: 3vmin;
+         font-weight: bold;
+      }
+      label{
+         font-size: 3.5vmin;
+         font-weight: bold;
+      }
+      #params label{
+         font-size: 3.2vmin;
+      }
+      input{
+         height: 5vmin;
+         width: 8vmin;
+      }
+      i{
+         font-size: 12vmin;
+      }
+      .down{
+         display: none;
+      }
+      .text {
+            font-style: italic;
+            color:bisque;
+            text-align: center; /* Center horizontally */
+            font-size: 15vmin;
+            font-weight: bolder;
+        }
+        textarea {
+            box-sizing: border-box; /* Ensure padding and border are included in the element's width and height */
+            font-size: small;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            padding: 10px;
+            background-color: rgb(47, 47, 68);
+            color: beige;
+        }
+        textarea::placeholder {
+            text-align: center; /* Center placeholder text horizontally */
+        }
+
+      @media (max-width:700px) {
+         .container{
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+         }
+         label{
+         font-size: 2.8vmax;
+         font-style: italic;
+      }
+      button{
+         font-size: 1.9vmax;
+         height: 9vmin;
+         width: 34vmin;
+      }
+         .field1{
+            width: 78%;
+            margin: 2vmin;
+            height: 200%;
+         }
+         .field2{
+            width: 78%;
+            margin: 2vmin;
+         }
+         #myForm{
+            margin-top: -11vmin;
+         }
+         h1{
+            font-size: 3.8vmax;
+         }
+         .right{
+            display: none;
+         }
+         #params{
+            flex-direction:row;
+         }
+         #params label{
+         font-size: 3.7vmin;
+      }
+        .down{
+         display: inline-block;
+         margin-left: 4vmin;
+         margin-right: 4vmin;
+        }
+      }
+
+   </style>
+</head>
+<body>
+   <main>
+      <h1>Data Summarization</h1>
+      <form action="/summarize" method="POST" id="myForm">
+         <div class="container">
+            <div class="field1">
+               <label for="input_text">Enter data to be summarized</label>
+               <br>
+               <textarea name="input_text" id="input_text" required placeholder="Enter some text...">{{input}}</textarea>
+            </div>
+            <div id="params">
+               <label for="minL">Min-length:</label>
+               <input type="number" id="minL" name="minL" required>
+               <br>
+               <i class="fa-solid fa-arrow-right right" style="color: #2c0c83;"></i>
+               <i class="fa-solid fa-arrow-down down" style="color: #2c0c83;"></i>
+               <br>
+               <label for="maxL">Max-length:</label>
+               <input type="number" id="maxL" name="maxL" required>
+            </div>
+            <div class="field2">
+               <label for="output_text">Summarized data</label>
+               <br>
+               <textarea name="output_text" id="output_text" placeholder="Here is Summarized Data..." title="Click here to copy" readonly>{{summary_text}}</textarea>
+            </div>
+         </div>
+         <button type="submit" id="btn">Get Summary</button>
+      </form>
+   </main>
+   <script>
+      summary = document.getElementById("output_text");
+      output = document.getElementById("output_text");
+      form = document.getElementById("myForm");
+
+
+      form.addEventListener("submit",()=>{
+         summary.value = "Generating...";
+         summary.classList.add("text");
+ })
+      
+      output.addEventListener("click",function(){
+         textToCopy=output.textContent;
+         navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+            // Optional: Provide feedback to the user
+            alert('Text copied to clipboard: ' + textToCopy);
+        })
+         .catch(err => {
+             console.error('Unable to copy text: ', err);
+        });
+      })
+
+
+   </script>
+</body>
+</html>
