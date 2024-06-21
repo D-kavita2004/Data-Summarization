@@ -143,7 +143,7 @@
             align-items: center;
          }
          label{
-         font-size: 2.7vmax;
+         font-size: 2.9vmax;
          font-style: italic;
       }
       button{
@@ -174,13 +174,19 @@
             flex-direction:row;
          }
          #params label{
-         font-size: 3.8vmin;
+         font-size: 3.9vmin;
       }
         .down{
          display: inline-block;
          margin-left: 4vmin;
          margin-right: 4vmin;
         }
+      }
+      @media (max-width:450px) {
+         #field1 label, #field2 label{
+         font-size: 2.6vmax;
+         font-style: italic;
+      }
       }
 
    </style>
@@ -196,13 +202,13 @@
                <textarea name="input_text" id="input_text" required placeholder="Enter some text...">{{input}}</textarea>
             </div>
             <div id="params">
-               <label for="minL">Min-length:</label>
+               <label for="minL">Min-Words:</label>
                <input type="number" id="minL" name="minL" required>
                <br>
                <i class="fa-solid fa-arrow-right right" style="color: #2c0c83;"></i>
                <i class="fa-solid fa-arrow-down down" style="color: #2c0c83;"></i>
                <br>
-               <label for="maxL">Max-length:</label>
+               <label for="maxL">Max-words:</label>
                <input type="number" id="maxL" name="maxL" required>
             </div>
             <div class="field2">
