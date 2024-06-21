@@ -3,8 +3,8 @@ import requests
 
 app = Flask(__name__)
 
-headers = {"Authorization": "Bearer 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"}
 API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
+headers = {"Authorization": "Bearer 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"}
 
 def query(payload):
    response=requests.post(API_URL,headers=headers,json=payload)
@@ -25,3 +25,8 @@ def summarize():
 
 if __name__ =='__main__':
    app.run(debug=False,host="0.0.0.0")
+
+
+
+
+
